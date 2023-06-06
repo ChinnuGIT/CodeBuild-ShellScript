@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+    - cd backend/functions/src
+    - npm install serverless
+  build:
+    commands:
+    - ls
+    - ./deploy.sh
