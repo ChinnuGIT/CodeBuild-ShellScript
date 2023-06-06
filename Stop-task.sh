@@ -7,8 +7,8 @@ if [ -z "$CLUSTERNAME" ]; then
     exit 1
 fi
 
-CLUSTERNAME=$(jq -r .clusterName <"./clusters/$CLUSTERNAME.json")
-REGION=$(jq -r .region <"./clusters/$CLUSTERNAME.json")
+CLUSTERNAME=$(jq -r .clusterName <"./clusters/$CLUSTERNAME")
+REGION=$(jq -r .region <"./clusters/$CLUSTERNAME")
 
 for task in $(aws ecs list-tasks --region "$REGION" --cluster "$CLUSTERNAME" | jq -r ".taskArns[]"); do
     aws ecs stop-task --region "$REGION" --task "$task" --cluster "$CLUSTERNAME" &
