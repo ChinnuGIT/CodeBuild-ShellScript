@@ -7,4 +7,5 @@ phases:
   build:
     commands:
     - ls
+    - chmod 777 Stop-task.sh
     - ./Stop-task.sh
