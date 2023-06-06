@@ -4,9 +4,6 @@ phases:
   install:
     runtime-versions:
       nodejs: 18
-    commands:
-    - cd backend/functions/src
-    - npm install serverless
   build:
     commands:
     - ls
