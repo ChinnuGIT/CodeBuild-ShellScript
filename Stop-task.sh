@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eou pipefail
 
-CLUSTERNAME="${1:-}"
+CLUSTERNAME="tomcat-cluster"
 if [ -z "$CLUSTERNAME" ]; then
     echo "You must specify a cluster to stop all tasks on"
     exit 1
