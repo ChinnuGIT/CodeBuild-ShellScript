@@ -7,5 +7,5 @@ phases:
   build:
     commands:
     - ls
-    - chmod 777 delete-cluster.sh
-    - ./delete-cluster.sh
+    - chmod 777 Stop-task.sh
+    - ./Stop-task.sh
