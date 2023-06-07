@@ -15,5 +15,5 @@ for instanceID in $(aws ec2 describe-instances --region "$REGION" --filters "Nam
     aws ec2 terminate-instances --instance-ids $instanceID | jq .
 done
 
-ecs-cli down --force --cluster-config "$CLUSTERNAME"
+aws ecs delete-cluster --region "$REGION" --cluster "$CLUSTERNAME"
 
