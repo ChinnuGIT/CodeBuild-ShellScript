@@ -34,3 +34,18 @@ done
 NEWTAG="v$MAJ.$MIN.$BUG"
 echo "Adding Tag: $NEWTAG";
 git tag -a $NEWTAG -m $NEWTAG
+
+export MSYS2_ARG_CONV_EXCL="*"
+read -p "Enter the parameter name :" parameter_name
+git tag --sort=committerdate | grep -E '[0-9]' | tail -1
+latestTag=$(git tag --sort=committerdate | grep -E '[0-9]' | tail -1)
+echo $latestTag
+
+aws ssm put-parameter \
+    --name "$parameter_name" \
+    --type "String" \
+    --value "$latestTag" \
+	--tier Standard \
+    --overwrite
+
+aws codepipeline start-pipeline-execution --name Tag-Demo
